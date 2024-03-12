@@ -1,0 +1,65 @@
+[project]
+name = "distributional-superiority"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Anonymous", email = "donttry@hotmail.com"},
+]
+dependencies = [
+    "fiddle @ git+https://github.com/google/fiddle",
+    "numpy==1.24.3",
+    "matplotlib>=3.8.3",
+    "jax[cuda12_pip]>=0.4.25",
+    "etils>=1.7.0",
+    "absl-py>=2.1.0",
+    "chex>=0.1.85",
+    "flax>=0.8.1",
+    "gymnasium>=0.29.1",
+    "einops>=0.7.0",
+    "clu>=0.0.11",
+    "orbax>=0.1.9",
+    "tqdm>=4.66.2",
+    "tensorflow==2.13.1",
+    "ipykernel>=6.29.3",
+    "dill>=0.3.8",
+    "aim>=3.19.2",
+    "wandb>=0.16.6",
+    "tensorboard>=2.13.0",
+    "scipy>=1.13.0",
+    "pandas>=2.2.2",
+    "comet-ml>=3.41.0",
+]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[project.optional-dependencies]
+launch = [
+]
+finance = [
+    "yfinance>=0.2.37",
+]
+[tool.pdm]
+distribution = false
+
+[tool.pdm.resolution.overrides]
+alembic = ">1.5.0"
+sqlalchemy = "<2,>=1.4.1"
+
+[[tool.pdm.source]]
+name = "jax"
+url = "https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+verify_ssl = true
+type = "find_links"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+reportMissingTypeArgument = true
+
+[tool.ruff]
+# Don't fix unused imports
+unfixable = ["F401"]
+# Ignore unused variables
+ignore = ["F841", "F722"]
