@@ -55,7 +55,7 @@ class QLearningModel(nn.Module):
 
     def act(self, x) -> int:
         q_values = self.action_values(x)
-        return jnp.argmax(x)
+        return jnp.argmax(q_values)
 
 
 class AdvantageModel(nn.Module):
